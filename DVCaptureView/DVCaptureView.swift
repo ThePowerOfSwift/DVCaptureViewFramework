@@ -12,7 +12,7 @@ import CoreImage
 import GLKit
 
 
-class DVCaptureView: UIView {
+open class DVCaptureView: UIView {
     
     // MARK: Properties
     
@@ -57,7 +57,7 @@ class DVCaptureView: UIView {
     
     // MARK: Lifecycle
     
-    override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
         borderWidth = 30
@@ -118,7 +118,7 @@ class DVCaptureView: UIView {
             HUD.dismiss()
             guard let jpg = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer) else { return }
             var enhancedImage: CIImage = CIImage(data: jpg)!
-
+            
             
             if self.isBorderEnabled {
                 if let rectangleFeature = self.biggestRectangleInRectangles(rectangles: self.highAccuracyRectangleDetector()?.features(in: enhancedImage) as! [CIRectangleFeature]) {
@@ -208,7 +208,7 @@ extension DVCaptureView {
 
 extension DVCaptureView: AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
+    public func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
         
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         

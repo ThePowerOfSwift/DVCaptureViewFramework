@@ -8,7 +8,7 @@ s.summary = "DVCaptureView use for rectangle detecting."
 s.requires_arc = true
 
 # 2
-s.version = "1.0.0"
+s.version = "1.0"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -26,9 +26,6 @@ s.source = { :git => "https://github.com/damienissa/DVCaptureViewFramework.git",
 s.framework = "UIKit"
 
 # 8
-s.source_files = "DVCaptureView/**/*.{swift}"
-
-# 9
-s.resources = "DVCaptureView/**/*.{png,jpeg,jpg,storyboard,xib}"
+s.source_files = "DVCaptureView/**/*.{swift, plist}"
 
 end
