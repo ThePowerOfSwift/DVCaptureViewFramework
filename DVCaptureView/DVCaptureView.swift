@@ -44,7 +44,7 @@ open class DVCaptureView: UIView {
     fileprivate var contentSize: CGSize?
     fileprivate var captureDevice: AVCaptureDevice?
     fileprivate var dataOutput: AVCaptureVideoDataOutput?
-    fileprivate var glkView: GLKView!
+    fileprivate var glkView: GLKView?
     fileprivate var coreImageContext: CIContext?
     fileprivate var context: EAGLContext!
     fileprivate var rectangleFeature: CIRectangleFeature!
@@ -142,9 +142,9 @@ extension DVCaptureView {
         context = EAGLContext(api: .openGLES2)
         glkView = GLKView(frame: frame, context: context!)
         coreImageContext = CIContext(eaglContext: context!)
-        glkView.contentScaleFactor = 1.0
-        glkView.drawableDepthFormat = .format24
-        insertSubview(glkView, at: 0)
+        glkView?.contentScaleFactor = 1.0
+        glkView?.drawableDepthFormat = .format24
+        insertSubview(glkView!, at: 0)
     }
     
     fileprivate func defaultConfigureSession() {
@@ -229,10 +229,10 @@ extension DVCaptureView: AVCaptureVideoDataOutputSampleBufferDelegate {
             
             let rect = cropImageRect(image)
             
-            glkView.bindDrawable()
+            glkView?.bindDrawable()
             coreImageContext?.draw(image, in: bounds, from: rect)
-            glkView.display()
-            glkView.contentMode = .scaleAspectFill
+            glkView?.display()
+            glkView?.contentMode = .scaleAspectFill
             border = nil
         }
     }
