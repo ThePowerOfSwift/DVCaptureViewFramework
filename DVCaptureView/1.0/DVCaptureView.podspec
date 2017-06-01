@@ -26,6 +26,6 @@ s.source = { :git => "https://github.com/damienissa/DVCaptureViewFramework.git",
 s.framework = "UIKit"
 
 # 8
-s.source_files = "DVCaptureView/*.{swift}"
+s.source_files = "DVCaptureView/**/*.{swift, plist}"
 
 end
